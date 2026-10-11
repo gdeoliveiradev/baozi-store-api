@@ -1,0 +1,87 @@
+@startuml caso_de_uso_baozi_store
+
+title Baozi Store API - Diagrama de Caso de Uso
+
+left to right direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor #F7FAFC
+    BorderColor #2F5D8A
+    ArrowColor #4A5568
+    FontColor #1A202C
+}
+skinparam rectangle {
+    BorderColor #1F4E78
+    FontColor #1F2937
+}
+
+actor "Usuário da API" as Usuario
+
+rectangle "Baozi Store API" {
+
+    usecase "Gerenciar clientes" as GerenciarClientes
+    usecase "Gerenciar produtos" as GerenciarProdutos
+    usecase "Gerenciar pedidos" as GerenciarPedidos
+
+    package "Clientes" {
+        usecase "Cadastrar cliente" as CadastrarCliente
+        usecase "Listar clientes" as ListarClientes
+        usecase "Consultar cliente por ID" as ConsultarCliente
+        usecase "Atualizar cliente" as AtualizarCliente
+        usecase "Excluir cliente" as ExcluirCliente
+    }
+
+    package "Produtos" {
+        usecase "Cadastrar produto" as CadastrarProduto
+        usecase "Listar produtos" as ListarProdutos
+        usecase "Consultar produto por ID" as ConsultarProduto
+        usecase "Atualizar produto" as AtualizarProduto
+        usecase "Excluir produto" as ExcluirProduto
+    }
+
+    package "Pedidos" {
+        usecase "Cadastrar pedido" as CadastrarPedido
+        usecase "Listar pedidos" as ListarPedidos
+        usecase "Consultar pedido por ID" as ConsultarPedido
+        usecase "Atualizar pedido" as AtualizarPedido
+        usecase "Excluir pedido" as ExcluirPedido
+    }
+}
+
+Usuario --> GerenciarClientes
+Usuario --> GerenciarProdutos
+Usuario --> GerenciarPedidos
+
+GerenciarClientes ..> CadastrarCliente : <<include>>
+GerenciarClientes ..> ListarClientes : <<include>>
+GerenciarClientes ..> ConsultarCliente : <<include>>
+GerenciarClientes ..> AtualizarCliente : <<include>>
+GerenciarClientes ..> ExcluirCliente : <<include>>
+
+GerenciarProdutos ..> CadastrarProduto : <<include>>
+GerenciarProdutos ..> ListarProdutos : <<include>>
+GerenciarProdutos ..> ConsultarProduto : <<include>>
+GerenciarProdutos ..> AtualizarProduto : <<include>>
+GerenciarProdutos ..> ExcluirProduto : <<include>>
+
+GerenciarPedidos ..> CadastrarPedido : <<include>>
+GerenciarPedidos ..> ListarPedidos : <<include>>
+GerenciarPedidos ..> ConsultarPedido : <<include>>
+GerenciarPedidos ..> AtualizarPedido : <<include>>
+GerenciarPedidos ..> ExcluirPedido : <<include>>
+
+CadastrarPedido ..> ConsultarCliente : <<include>>
+CadastrarPedido ..> ConsultarProduto : <<include>>
+
+note bottom of Usuario
+Gabriel Antunes de Oliveira
+RU 4622636
+Análise e Desenvolvimento de Sistemas
+Brasília-DF
+end note
+
+@enduml
